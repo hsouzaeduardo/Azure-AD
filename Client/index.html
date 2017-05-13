@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/App/app.js"></script>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.14/js/adal.min.js"></script>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.14/js/adal-angular.min.js"></script>
+
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="cidadesApp" ng-controller="cidadesController">
+    
+    <div data-ng-model="userInfo">
+        <span data-ng-hide="!userInfo.isAuthenticated">Welcome {{userInfo.userName}} </span>
+        <button data-ng-hide="!userInfo.isAuthenticated" data-ng-click="logout()">Logout</button>
+        <button data-ng-hide="userInfo.isAuthenticated" data-ng-click="login()">Login</button>
+
+        <div>
+            {{userInfo.loginError}}
+        </div>
+        <div>
+            {{testMessage}}
+        </div>
+    </div>
+    <div ng-view>
+        Your view will appear here.
+    </div>
+
+    <button ng-click="getCidade()" >Get API</button>
+    <br />
+    <p>Cidade: {{cidades.Nome}}</p>
+    <p>Temperatura: {{cidades.Temperatura}} ºC</p>
+    <p>Latitude: {{cidades.Latitude}}</p>
+    <p>Longitude: {{cidades.Longitude}}</p>
+</body>
+</html>
